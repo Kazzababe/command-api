@@ -1,0 +1,35 @@
+plugins {
+    id 'java'
+    id 'maven-publish'
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+
+    maven {
+        url 'https://papermc.io/repo/repository/maven-public/'
+    }
+}
+
+dependencies {
+    compileOnly 'io.papermc.paper:paper-api:1.18.1-R0.1-SNAPSHOT'
+
+    implementation 'org.jetbrains:annotations:23.0.0'
+    implementation 'net.kyori:adventure-text-minimessage:4.1.0-SNAPSHOT'
+}
+
+group = 'ravioli.gravioli'
+version = '1.0-SNAPSHOT'
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from(components.java)
+        }
+    }
+}
+
+java {
+    toolchain.languageVersion.set(JavaLanguageVersion.of(17))
+}
