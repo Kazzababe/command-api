@@ -26,7 +26,7 @@ public final class CommandWrapper extends org.bukkit.command.Command {
         final String commandString = StringUtils.join(args, " ");
 
         if (subCommand != null) {
-            if (subCommand.canExecute(commandSender, commandString)) {
+            if (subCommand.canExecute(commandSender, commandString, true)) {
                 subCommand.execute(commandSender, args);
             } else {
                 final CommandExecutor permissionFailExecutor = subCommand.getPermissionFailExecutor();

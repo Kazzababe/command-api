@@ -6,5 +6,5 @@ import org.jetbrains.annotations.Nullable;
 
 @FunctionalInterface
 public interface CommandCondition {
-    boolean canUse(@NotNull CommandSender sender, @Nullable String commandString);
+    boolean canUse(@NotNull CommandSender sender, @Nullable String commandString, boolean duringExecution);
 }

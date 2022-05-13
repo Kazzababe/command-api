@@ -16,7 +16,7 @@ dependencies {
     compileOnly 'io.papermc.paper:paper-api:1.18.1-R0.1-SNAPSHOT'
 
     implementation 'org.jetbrains:annotations:23.0.0'
-    implementation 'net.kyori:adventure-text-minimessage:4.1.0-SNAPSHOT'
+    implementation 'net.kyori:adventure-text-minimessage:4.10.1'
 }
 
 group = 'ravioli.gravioli'

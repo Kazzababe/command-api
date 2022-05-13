@@ -51,10 +51,10 @@ public class Command {
         return (commandSender, commandContext) -> {
             final List<Component> lines = new ArrayList<>();
 
-            lines.add(MiniMessage.get().parse("<green> --- Available Commands ---"));
+            lines.add(MiniMessage.miniMessage().deserialize("<green> --- Available Commands ---"));
 
             this.subCommands.forEach((subCommand) -> {
-                if (subCommand.canExecute(commandSender, commandContext.getInput())) {
+                if (subCommand.canExecute(commandSender, commandContext.getInput(), false)) {
                     lines.add(subCommand.toComponent());
                 }
             });
@@ -94,7 +94,7 @@ public class Command {
             if (!subCommand.currentlyMatches(args)) {
                 continue;
             }
-            if (!subCommand.canExecute(commandSender, commandString)) {
+            if (!subCommand.canExecute(commandSender, commandString, false)) {
                 continue;
             }
             suggestions.addAll(subCommand.getSuggestions(commandSender, args));

@@ -61,14 +61,15 @@ public class SubCommand {
         return this;
     }
 
-    final boolean canExecute(@NotNull final CommandSender commandSender, @Nullable final String commandString) {
+    final boolean canExecute(@NotNull final CommandSender commandSender, @Nullable final String commandString,
+                             final boolean duringExecution) {
         if (this.permissionNode != null) {
             if (!commandSender.hasPermission(this.permissionNode)) {
                 return false;
             }
         }
         return this.commandConditions.stream()
-            .allMatch((condition) -> condition.canUse(commandSender, commandString));
+            .allMatch((condition) -> condition.canUse(commandSender, commandString, duringExecution));
     }
 
     final @Nullable String getPermissionNode() {
@@ -94,7 +95,7 @@ public class SubCommand {
                     .append(">");
             }
         }
-        return MiniMessage.get().parse(text.toString());
+        return MiniMessage.miniMessage().deserialize(text.toString());
     }
 
     final boolean currentlyMatches(@NotNull final String[] args) {
